@@ -36,7 +36,9 @@ st.metric("Total estimado de renda mensal", f"US$ {renda_total:,.2f}")
 st.markdown("---")
 st.subheader("📅 Projeções de Renda")
 st.metric("Projeção mensal com opções", f"US$ {renda_opcao:,.2f} ({(renda_opcao / valor_total_carteira * 100):.2f}%)")
+st.caption("→ Calculado com base em: {} contratos de 100 ações × US$ {:.2f} por ação".format(lotes, premio_call))
 st.metric("Projeção mensal com dividendos", f"US$ {renda_dividendo:,.2f} ({(renda_dividendo / valor_total_carteira * 100):.2f}%)")
+st.caption("→ Calculado com base em: {} ações × US$ {:.2f} por ação/mês".format(acoes_tsl, dividendo_mensal))
 st.metric("Renda total por ano", f"US$ {renda_total * 12:,.2f}")
 
 # Reinvestimento
@@ -89,4 +91,5 @@ st.markdown("""
 - Os valores são estimativas e variam com o mercado real.
 - O reinvestimento assume recompra no preço atual da TSLY sem fracionamento.
 - Aportes mensais são somados à renda para simular recompra adicional de ações.
+- Os percentuais são baseados no valor atual da carteira (quantidade × preço atual).
 """)
