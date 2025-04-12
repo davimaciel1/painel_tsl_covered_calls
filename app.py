@@ -80,11 +80,11 @@ ax2.grid(True)
 st.pyplot(fig)
 
 # Observações
-st.markdown(\"\"\"
+st.markdown("""
 ### 📌 Observações:
 - O painel considera que a call vendida expira OTM (fora do dinheiro) e você não é exercido.
 - Se TSLY subir acima do strike, pode ser necessário rolar a call para o próximo vencimento.
 - Os valores são estimativas e variam com o mercado real.
 - O reinvestimento assume recompra no preço atual da TSLY sem fracionamento.
 - Aportes mensais são somados à renda para simular recompra adicional de ações.
-\"\"\")
+""")
