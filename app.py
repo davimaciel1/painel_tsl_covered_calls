@@ -19,6 +19,7 @@ lotes = acoes_tsl // 100
 renda_opcao = lotes * premio_call * 100
 renda_dividendo = acoes_tsl * dividendo_mensal
 renda_total = renda_opcao + renda_dividendo
+valor_total_carteira = acoes_tsl * preco_acao
 
 # Reinvestimento automático
 acoes_novas = int((renda_total + aporte_mensal) // preco_acao)
@@ -31,11 +32,12 @@ st.metric("Renda com opções (para {} dias)".format(dias_para_vencimento), f"US
 st.metric("Renda com dividendos mensais", f"US$ {renda_dividendo:,.2f}")
 st.metric("Total estimado de renda mensal", f"US$ {renda_total:,.2f}")
 
-# Projeção anualizada simples
-renda_anual = renda_total * 12
+# Projeção anualizada e mensal com percentuais
 st.markdown("---")
-st.subheader("📅 Projeção Anualizada")
-st.metric("Renda total por ano", f"US$ {renda_anual:,.2f}")
+st.subheader("📅 Projeções de Renda")
+st.metric("Projeção mensal com opções", f"US$ {renda_opcao:,.2f} ({(renda_opcao / valor_total_carteira * 100):.2f}%)")
+st.metric("Projeção mensal com dividendos", f"US$ {renda_dividendo:,.2f} ({(renda_dividendo / valor_total_carteira * 100):.2f}%)")
+st.metric("Renda total por ano", f"US$ {renda_total * 12:,.2f}")
 
 # Reinvestimento
 st.markdown("---")
